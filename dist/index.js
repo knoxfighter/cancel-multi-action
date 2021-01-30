@@ -6,6 +6,7 @@ module.exports =
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const https = __nccwpck_require__(211);
+const promise = __nccwpck_require__(300)
 const core = __nccwpck_require__(864);
 const github = __nccwpck_require__(366);
 
@@ -27,13 +28,15 @@ const httpPrOptions = {
     'Content-Type': 'application/json',
     'User-Agent': 'actions/cancel-multi-action'
   },
-  method: 'GET'
+  method: 'GET',
+  json: true
 }
 
 const prReq = https.request(httpPrOptions, (prRes) => {
   prRes.on('data', (data) => {
+    const mergedData = Buffer.concat(data)
+    let parsed = JSON.parse(mergedData);
     console.log(data);
-    let parsed = JSON.parse(data);
     if (prRes.statusCode != 200) {
       console.log(`Error (${prRes.statusCode}): ${parsed.message}`);
       process.exit(1);
@@ -5859,6 +5862,14 @@ function wrappy (fn, cb) {
 /***/ ((module) => {
 
 module.exports = eval("require")("encoding");
+
+
+/***/ }),
+
+/***/ 300:
+/***/ ((module) => {
+
+module.exports = eval("require")("request-promise");
 
 
 /***/ }),

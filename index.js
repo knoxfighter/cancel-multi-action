@@ -1,4 +1,5 @@
 const https = require('https');
+const promise = require('request-promise')
 const core = require('@actions/core');
 const github = require('@actions/github');
 
@@ -20,13 +21,15 @@ const httpPrOptions = {
     'Content-Type': 'application/json',
     'User-Agent': 'actions/cancel-multi-action'
   },
-  method: 'GET'
+  method: 'GET',
+  json: true
 }
 
 const prReq = https.request(httpPrOptions, (prRes) => {
   prRes.on('data', (data) => {
+    const mergedData = Buffer.concat(data)
+    let parsed = JSON.parse(mergedData);
     console.log(data);
-    let parsed = JSON.parse(data);
     if (prRes.statusCode != 200) {
       console.log(`Error (${prRes.statusCode}): ${parsed.message}`);
       process.exit(1);
