@@ -25,6 +25,7 @@ const httpPrOptions = {
 
 const prReq = https.request(httpPrOptions, (prRes) => {
   prRes.on('data', (data) => {
+    console.log(data);
     let parsed = JSON.parse(data);
     if (prRes.statusCode != 200) {
       console.log(`Error (${prRes.statusCode}): ${parsed.message}`);
