@@ -1,13 +1,10 @@
 name: 'Cancel Multi Action'
 description: 'Cancel the Action, if it is from this repository, so it is not run a second time.'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  token:
+    description: 'Token'
+    required: false
+    default: ${{ github.token }}
 runs:
   using: 'node12'
   main: 'dist/index.js'
