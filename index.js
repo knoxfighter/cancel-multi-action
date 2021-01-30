@@ -28,7 +28,7 @@ const prReq = https.request(httpPrOptions, (prRes) => {
   prRes.on('data', (data) => {
     let parsed = JSON.parse(data);
     if (prRes.statusCode != 200) {
-      console.log(`Error (${cancelRes.statusCode}): ${parsed.message}`);
+      console.log(`Error (${prRes.statusCode}): ${parsed.message}`);
       process.exit(1);
     } else if (parsed.head.label.startsWith('OpenFactorioServerManager')) {
       const httpCancelOptions = {
