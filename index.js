@@ -1,5 +1,4 @@
 const https = require('https');
-const promise = require('request-promise')
 const core = require('@actions/core');
 const github = require('@actions/github');
 

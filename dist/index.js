@@ -6,7 +6,6 @@ module.exports =
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const https = __nccwpck_require__(211);
-const promise = __nccwpck_require__(300)
 const core = __nccwpck_require__(864);
 const github = __nccwpck_require__(366);
 
@@ -5862,14 +5861,6 @@ function wrappy (fn, cb) {
 /***/ ((module) => {
 
 module.exports = eval("require")("encoding");
-
-
-/***/ }),
-
-/***/ 300:
-/***/ ((module) => {
-
-module.exports = eval("require")("request-promise");
 
 
 /***/ }),
