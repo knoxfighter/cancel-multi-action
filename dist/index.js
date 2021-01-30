@@ -13,7 +13,8 @@ const github = __nccwpck_require__(366);
 github.context.ref
 const refRegexp = /\w+?\/\w+?\/(\d+?)\//;
 const regexResult = refRegexp.exec(github.context.ref);
-const prNumber = regexResult[0]
+const prNumber = regexResult[0];
+console.log(`Running on ${prNumber}`)
 
 if (prNumber === null) {
   console.log("Let this workflow run.");
