@@ -10,10 +10,9 @@ const core = __nccwpck_require__(864);
 const github = __nccwpck_require__(366);
 
 // parse github ref to get PR number
-github.context.ref
 const refRegexp = /\w+?\/\w+?\/(\d+?)\//;
 const regexResult = refRegexp.exec(github.context.ref);
-const prNumber = regexResult[0];
+const prNumber = regexResult[1];
 console.log(`Running on ${prNumber}`)
 
 if (prNumber === null) {

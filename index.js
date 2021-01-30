@@ -3,10 +3,9 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 // parse github ref to get PR number
-github.context.ref
 const refRegexp = /\w+?\/\w+?\/(\d+?)\//;
 const regexResult = refRegexp.exec(github.context.ref);
-const prNumber = regexResult[0];
+const prNumber = regexResult[1];
 console.log(`Running on ${prNumber}`)
 
 if (prNumber === null) {
